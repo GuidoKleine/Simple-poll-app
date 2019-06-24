@@ -1,6 +1,6 @@
 <template>
   <div class="answers-container">
-    <h1>{{ title }}</h1>
+    <h1>{{ poll }}</h1>
     <ul>
       <li v-for="answer in answers" :answer="answer">{{ answer }}</li>
     </ul>
@@ -14,16 +14,13 @@ export default {
   name: "AnswerSheet",
   components: {
     PollItem
-    
-    },
-  data() {
-    return {
-      title: "Give your vote!",
-    };
   },
   computed: {
-    answers(){
-      return this.$store.state.answers
+    poll() {
+      return this.$store.state.poll;
+    },
+    answers() {
+      return this.$store.state.answers;
     }
   }
 };

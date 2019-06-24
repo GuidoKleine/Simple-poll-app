@@ -1,7 +1,7 @@
 <template>
   <div class="poll-container">
     <input type="text" name="title" v-model="title" placeholder="Title">
-    <h2>{{ title }}</h2>
+    <h2>{{ poll }}</h2>
     <ul>
       <poll-item v-for="answer in answers" :answer="answer"></poll-item>
     </ul>
@@ -27,14 +27,17 @@ export default {
   },
   methods: {
     appendAnswer(pollAnswer) {
-     // this.answers.push(pollAnswer);
+     this.$store.state.answers.push(pollAnswer)
     },
     resetForm() {
       this.$data.title = "";
-      this.$data.answers = [];
+      this.$store.state.answers = [];
     }
   },
     computed: {
+      poll(){
+        return this.$store.state.poll
+      },
     answers(){
       return this.$store.state.answers
     }
