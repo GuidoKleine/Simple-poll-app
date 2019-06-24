@@ -1,5 +1,8 @@
 # poll-app
-
+```
+To use npm go:
+cd ./poll-app
+```
 ## Project setup
 ```
 npm install

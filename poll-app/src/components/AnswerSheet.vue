@@ -2,12 +2,13 @@
   <div class="answers-container">
     <h1>{{ poll }}</h1>
     <ul>
-      <poll-item v-for="answer in answers" :answer="answer">{{ answer }}</poll-item>
+      <poll-item v-for="(option, index) in answers" :answer="option, index"></poll-item>
     </ul>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex"
 import PollItem from "./PollItem";
 
 export default {
@@ -16,14 +17,11 @@ export default {
     PollItem
   },
   computed: {
-    // Get poll title from store
-    poll() {
-      return this.$store.state.poll;
-    },
-    // Get answers from store
-    answers() {
-      return this.$store.state.answers;
-    }
+    ...mapGetters([
+      'poll',
+      'answers'
+    ]
+    )
   }
 };
 </script>

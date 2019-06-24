@@ -1,11 +1,10 @@
 <template>
-  <li>{{ answer }}</li>
+  <li><input type="radio"> {{ $attrs.answer }} </li>
 </template>
 
 <script>
 export default {
-  name: "PollItem",
-  props: ["answer"]
+  name: "PollItem"
 };
 </script>
 
