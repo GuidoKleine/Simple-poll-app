@@ -3,17 +3,19 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export const Store = new Vuex.Store({
+export const store = new Vuex.Store({
     state: {
-        answer: '',
-
+        answers: [
+            { answer: 'first question' },
+            { answer: 'second question' }
+        ],
     },
     mutations: {
         change(state, answer) {
             state.answer = answer
         }
     },
-    getter: {
-answer: state => state.answer
+    getters: {
+        answer: state => state.answer
     }
 })

@@ -20,20 +20,24 @@ export default {
     PollItem,
     AddAnswerForm,
   },
+   data() {
+    return {
+      title: ""
+    };
+  },
   methods: {
     appendAnswer(pollAnswer) {
-      this.answers.push(pollAnswer);
+     // this.answers.push(pollAnswer);
     },
     resetForm() {
       this.$data.title = "";
       this.$data.answers = [];
     }
   },
-  data() {
-    return {
-      title: "",
-      answers: []
-    };
+    computed: {
+    answers(){
+      return this.$store.state.answers
+    }
   }
 };
 </script>

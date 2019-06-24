@@ -2,7 +2,7 @@
   <div class="answers-container">
     <h1>{{ title }}</h1>
     <ul>
-      <poll-item v-for="answer in answers" :answer="answer"></poll-item>
+      <li v-for="answer in answers" :answer="answer">{{ answer }}</li>
     </ul>
   </div>
 </template>
@@ -12,7 +12,6 @@ import PollItem from "./PollItem";
 
 export default {
   name: "AnswerSheet",
-  props: ['anwers'],
   components: {
     PollItem
     
@@ -20,8 +19,12 @@ export default {
   data() {
     return {
       title: "Give your vote!",
-      answers: []
     };
+  },
+  computed: {
+    answers(){
+      return this.$store.state.answers
+    }
   }
 };
 </script>
