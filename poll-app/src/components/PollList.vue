@@ -1,7 +1,8 @@
 <template>
   <div class="poll-container">
-    <input type="text" name="title" v-model="title" placeholder="Title">
-    <h2>{{ poll }}</h2>
+    <input id="pollTitle" type="text" name="title" v-model="poll" placeholder="Title">
+    <button v-on:click="appendPoll"></button>
+    <h2>{{ pollTitle }}</h2>
     <ul>
       <poll-item v-for="answer in answers" :answer="answer"></poll-item>
     </ul>
@@ -18,28 +19,28 @@ export default {
   name: "PollList",
   components: {
     PollItem,
-    AddAnswerForm,
-  },
-   data() {
-    return {
-      title: ""
-    };
+    AddAnswerForm
   },
   methods: {
-    appendAnswer(pollAnswer) {
-     this.$store.state.answers.push(pollAnswer)
+    // inserts poll title into poll propertie in store
+    appendPoll() {
+      let pollTitle = document.getElementById("pollTitle").value;
+      this.$store.state.poll = pollTitle
     },
+    // insert answer option into answers array in store
+    appendAnswer(pollAnswer) {
+      this.$store.state.answers.push(pollAnswer);
+    },
+    //resets the form
     resetForm() {
-      this.$data.title = "";
+      this.$store.state.poll = "";
       this.$store.state.answers = [];
     }
   },
-    computed: {
-      poll(){
-        return this.$store.state.poll
-      },
-    answers(){
-      return this.$store.state.answers
+  computed: {
+    // returns the answers array
+    answers() {
+      return this.$store.state.answers;
     }
   }
 };

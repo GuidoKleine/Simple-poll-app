@@ -16,9 +16,11 @@ export default {
     PollItem
   },
   computed: {
+    // Get poll title from store
     poll() {
       return this.$store.state.poll;
     },
+    // Get answers from store
     answers() {
       return this.$store.state.answers;
     }

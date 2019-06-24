@@ -19,6 +19,7 @@ export default {
       pollAnswer: ""
     };
   },
+  // submits new answer to parent PollList.vue
   methods: {
     answerSubmit(pollAnswer) {
       this.$emit("addAnswer", pollAnswer);
