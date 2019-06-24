@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="title-container">
-      <h1>Querynator</h1>
+      <h1>Pollyynator</h1>
     </div>
     <div class="views-container">
       <poll-list></poll-list>
