@@ -31,13 +31,13 @@ export const store = new Vuex.Store({
         // Set new Answer in answers array
         appendAnswer: state => {
             let answerField = document.getElementById("answerField").value;
-            state.answers = answerField;
+            state.answers.answer[index] = answerField;
            // console.log(payload);
           
             
         },
         deleteAnswer: (state, payload) => {
-            state.answers.splice(payload)
+            state.answers.delete(payload)
         },
         //resets the form
         resetForm: state => {

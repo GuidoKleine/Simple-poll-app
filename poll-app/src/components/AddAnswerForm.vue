@@ -1,8 +1,8 @@
 <template>
     <div id="answerForm">
       <input id="answerField" type="text" name="title" placeholder="Answer">
-      <button @click="appendAnswer()" name="change-button"> Change </button>
-      <button @click.prevent="deleteAnswer()" name="del-button" > Delete </button>
+      <button @click="appendAnswer(index)" name="change-button"> Change </button>
+      <button @click.prevent="deleteAnswer(index)" name="del-button" > Delete </button>
     </div>
 </template>
 
