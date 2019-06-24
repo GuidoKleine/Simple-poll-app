@@ -2,7 +2,7 @@
   <div class="answers-container">
     <h1>{{ poll }}</h1>
     <ul>
-      <li v-for="answer in answers" :answer="answer">{{ answer }}</li>
+      <poll-item v-for="answer in answers" :answer="answer">{{ answer }}</poll-item>
     </ul>
   </div>
 </template>

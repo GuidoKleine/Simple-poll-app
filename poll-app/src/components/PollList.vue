@@ -1,12 +1,8 @@
 <template>
   <div class="poll-container">
-    <input id="pollTitle" type="text" name="title" v-model="poll" placeholder="Title">
-    <button v-on:click="appendPoll"></button>
-    <h2>{{ pollTitle }}</h2>
-    <ul>
-      <poll-item v-for="answer in answers" :answer="answer"></poll-item>
-    </ul>
-    <AddAnswerForm @addAnswer="appendAnswer"></AddAnswerForm>
+    <input id="pollTitle" type="text" name="title" placeholder="Title">
+    <button @click.prevent="appendPoll">Set Poll</button>
+    <AddAnswerForm id="answerForm" v-for=""></AddAnswerForm>
     <button id="reset-btn" @click.prevent="resetForm">Reset</button>
   </div>
 </template>
@@ -24,17 +20,11 @@ export default {
   methods: {
     // inserts poll title into poll propertie in store
     appendPoll() {
-      let pollTitle = document.getElementById("pollTitle").value;
-      this.$store.state.poll = pollTitle
-    },
-    // insert answer option into answers array in store
-    appendAnswer(pollAnswer) {
-      this.$store.state.answers.push(pollAnswer);
+      this.$store.dispatch("appendPoll");
     },
     //resets the form
     resetForm() {
-      this.$store.state.poll = "";
-      this.$store.state.answers = [];
+      this.$store.dispatch("resetForm")
     }
   },
   computed: {
@@ -54,14 +44,9 @@ export default {
   padding: 10px 0;
   border: solid 2px black;
 }
-h1,
-h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 2px;
+#answerForm {
+  margin: 5px;
 }
 
 #reset-btn {
