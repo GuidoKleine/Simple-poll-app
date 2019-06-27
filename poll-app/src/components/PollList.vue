@@ -1,9 +1,10 @@
 <template>
   <div class="poll-container">
-    <input id="pollTitle" type="text" name="title" placeholder="Title">
-    <button @click.prevent="appendPoll">Set Poll</button>
-    <AddAnswerForm v-for="(option, index) in answers" :answer="option, index"></AddAnswerForm>
-    <button @click.prevent="createAnswer" >Add answer</button>
+    <input id="pollTitle" v-model="pollTitle" type="text" name="title" placeholder="Title">
+    <button id="poll-btn" @click.prevent="appendPoll(pollTitle)">Set Poll</button>
+    <AddAnswerForm v-for="(answer, index) in answers" :key='index'></AddAnswerForm>
+    <input id="pollTitle" v-model="pollAnswer" type="text" name="answer" placeholder="Answer">
+    <button id="add-btn" @click.prevent="createAnswer(pollAnswer)">Add answer</button>
     <button id="reset-btn" @click.prevent="resetForm">Reset</button>
   </div>
 </template>
@@ -11,26 +12,24 @@
 <script>
 import { mapGetters } from "vuex";
 import { mapActions } from "vuex";
-import PollItem from "./PollItem";
 import AddAnswerForm from "./AddAnswerForm";
 
 export default {
   name: "PollList",
+  data() {
+    return {
+      pollTitle: null,
+      pollAnswer: null
+    };
+  },
   components: {
-    PollItem,
     AddAnswerForm
   },
   computed: {
-    ...mapGetters([
-      'answers'
-    ])
+    ...mapGetters(["answers"])
   },
   methods: {
-    ...mapActions([
-      'appendPoll',
-      'createAnswer',
-      'resetForm'
-    ])
+    ...mapActions(["appendPoll", "createAnswer", "resetForm"])
   }
 };
 </script>
@@ -41,11 +40,39 @@ export default {
   width: 33%;
   margin: 5px;
   padding: 10px 0;
-  border: solid 2px black;
+  border: solid 2px #9879d0;
+  background-color: whitesmoke;
 }
 
-#reset-btn {
+#reset-btn,
+#poll-btn,
+#add-btn {
   margin: 5px;
-  text-align: right;
+  text-align: center;
+  -webkit-border-radius: 15;
+  -moz-border-radius: 15;
+  border-radius: 15px;
+  -webkit-box-shadow: 1px 3px 0px #666666;
+  -moz-box-shadow: 1px 3px 0px #666666;
+  box-shadow: 1px 3px 0px #666666;
+  color: #ffffff;
+  background: #9879d0;
+  padding: 5px 8px 5px 8px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+#reset-btn:hover,
+#poll-btn:hover,
+#add-btn:hover {
+  background: #ac93d9;
+}
+#reset-btn:active,
+#poll-btn:active,
+#add-btn:active {
+  background: #ac93d9;
+  text-decoration: none;
+  box-shadow: 0 0px #666;
+  transform: translateY(2px);
 }
 </style>

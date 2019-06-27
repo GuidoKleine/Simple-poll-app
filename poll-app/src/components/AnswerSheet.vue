@@ -30,6 +30,7 @@ export default {
 .answers-container {
   width: 33%;
   margin: 5px;
-  border: solid 2px black;
+  border: solid 2px #9879d0;
+  background-color: whitesmoke;
 }
 </style>

@@ -1,10 +1,15 @@
 <template>
-  <li><input type="radio"> {{ $attrs.answer }} </li>
+  <li><input type="radio"> {{ answers.answer }} </li>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  name: "PollItem"
+  name: "PollItem",
+  computed: {
+    ...mapGetters(["answers"])
+  }
 };
 </script>
 
