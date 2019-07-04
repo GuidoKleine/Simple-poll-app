@@ -1,11 +1,13 @@
 <template>
   <div class="poll-container">
-    <input id="pollTitle" v-model="pollTitle" type="text" name="title" placeholder="Title">
+    <input id="pollTitle" v-model="pollTitle" type="text" name="title" placeholder="Title" />
     <button id="poll-btn" @click.prevent="appendPoll(pollTitle)">Set Poll</button>
-    <AddAnswerForm v-for="(answer, index) in answers" :key='index'></AddAnswerForm>
-    <input id="pollTitle" v-model="pollAnswer" type="text" name="answer" placeholder="Answer">
-    <button id="add-btn" @click.prevent="createAnswer(pollAnswer)">Add answer</button>
-    <button id="reset-btn" @click.prevent="resetForm">Reset</button>
+    <AddAnswerForm v-for="(answer) in answers" :key="answer.id"></AddAnswerForm>
+    <div class="addAnswerForm">
+      <input id="pollAnswer" v-model="pollAnswer" type="text" name="answer" placeholder="Answer" />
+      <button id="add-btn" @click.prevent="createAnswer(pollAnswer)">Add answer</button>
+      <button id="reset-btn" @click.prevent="resetForm">Reset</button>
+    </div>
   </div>
 </template>
 
@@ -44,16 +46,24 @@ export default {
   background-color: whitesmoke;
 }
 
+.addAnswerForm {
+  margin: 5px;
+}
+
+#pollTitle {
+  width: 58%;
+}
+
+#pollAnswer {
+  width: 90%;
+}
+
 #reset-btn,
 #poll-btn,
 #add-btn {
   margin: 5px;
   text-align: center;
-  -webkit-border-radius: 15;
-  -moz-border-radius: 15;
   border-radius: 15px;
-  -webkit-box-shadow: 1px 3px 0px #666666;
-  -moz-box-shadow: 1px 3px 0px #666666;
   box-shadow: 1px 3px 0px #666666;
   color: #ffffff;
   background: #9879d0;

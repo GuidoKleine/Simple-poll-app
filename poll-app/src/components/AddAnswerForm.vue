@@ -1,5 +1,5 @@
 <template>
-  <div id="answerForm">
+  <div id="changeAnswerForm">
     <input id="answerField" v-model="changeAnswer" type="text" name="title" placeholder="Answer">
     <button id="change-btn" @click="appendAnswer(changeAnswer)" name="change-button">Change</button>
     <button id="del-btn" @click.prevent="deleteAnswer(index)" name="del-button">Delete</button>
@@ -22,7 +22,10 @@ export default {
 </script>
 
 <style>
-#answerForm {
+#answerField {
+  width: 90%;
+}
+#changeAnswerForm {
   margin: 5px;
 }
 
@@ -30,11 +33,7 @@ export default {
 #del-btn {
   margin: 5px;
   text-align: center;
-  -webkit-border-radius: 15;
-  -moz-border-radius: 15;
   border-radius: 15px;
-  -webkit-box-shadow: 1px 3px 0px #666666;
-  -moz-box-shadow: 1px 3px 0px #666666;
   box-shadow: 1px 3px 0px #666666;
   color: #ffffff;
   background: #9879d0;
